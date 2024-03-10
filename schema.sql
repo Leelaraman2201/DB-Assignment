@@ -1,0 +1,45 @@
+CREATE TABLE product (
+    product_id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(50) NOT NULL,
+    desc VARCHAR(100) UNIQUE NOT NULL,
+    SKU VARCHAR(100) NOT NULL,
+    created_id INT NOT NULL,
+	inventory_id INT,
+	price decimal,
+	discount_id INT,
+	created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+	modified_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+	deleted_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+	FOREIGN KEY (created_id) REFERENCES product_category(id) 
+	
+);
+
+CREATE TABLE product_category (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+	FOREIGN KEY (id ) REFERENCES Table1(created_id ),
+	name VARCHAR(50) NOT NULL,
+	desc TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+	modified_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+	deleted_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE product_inventory (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+	FOREIGN KEY (id) REFERENCES Table1(inventory_id),
+	quantity INT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+	modified_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+	deleted_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+CREATE TABLE dicount (
+   id INT PRIMARY KEY AUTO_INCREMENT,
+   FOREIGN KEY (id) REFERENCES Table1(discount_id),
+	name VARCHAR(50) NOT NULL,
+	desc TEXT,
+	discount_percent decimal,
+	active boolean,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+	modified_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+	deleted_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
