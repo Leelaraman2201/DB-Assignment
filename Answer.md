@@ -33,4 +33,5 @@ CREATE TABLE product (
     modified_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     deleted_at TIMESTAMP DEFAULT NULL,
     FOREIGN KEY (created_id) REFERENCES product_category(id)  -- Establishing the one-to-many relationship
-);
+    );
+-----------------------------------------------------------------------------------------------------------------------
